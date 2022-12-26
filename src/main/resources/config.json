@@ -1,6 +1,21 @@
-
 {
-  "name" : "mkyong",
-  "age" : 33,
-  "messages" : [ "hello jackson 1", "hello jackson 2", "hello jackson 3" ]
+  "delayTimeInSeconds" : 30,
+"processConfig" :{
+  "idaa" : 2,
+  "mesi" : 1
+
+},
+  "filesToMonitor" :
+  [
+    "/home/lgmdev/Downloads/gitupgrade.sh",
+    "/home/lgmdev/Downloads/gitupgrade.sh"
+  ],
+  "lastUpdatedPermissibleIntervalInSeconds" : 30,
+  "systemCtlProcesses" :
+    [ "wims",
+      "WIMS-NG",
+      "WIMS-GEN",
+      "WIMS-SCH"
+    ],
+  "statusFile" : "/home/lgmdev/Downloads/"
 }

@@ -2,16 +2,17 @@ package org.isro.istrac.nsa.inoctf.domain;
 
 import lombok.NonNull;
 import org.apache.log4j.Logger;
+import org.isro.istrac.nsa.inoctf.config.SystemDHealthStatusConf;
 import org.isro.istrac.nsa.inoctf.exception.InternalAggregateMonException;
 import org.isro.istrac.nsa.inoctf.utils.Utils;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 
 public class SystemDHealthStatus implements  HealthStatus{
-    Utils utils;
-    public SystemDHealthStatus(@NonNull Utils utils) {
+    private SystemDHealthStatusConf config;
+    private Utils utils;
+    public SystemDHealthStatus(@NonNull Utils utils,@NonNull SystemDHealthStatusConf config) {
+        this.config=config;
         this.utils = utils;
     }
     final static Logger logger = Logger.getLogger(SystemDHealthStatus.class);

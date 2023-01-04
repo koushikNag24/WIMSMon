@@ -14,17 +14,7 @@ public class App
     public static void main( String[] args )
     {
         Utils utilsV1=new UtilsImplV1();
-        HealthStatus diskHealthStatus=new DiskHealthStatus(utilsV1);
-        HealthStatus fileHealthStatus=new FileHealthStatus(utilsV1);
-        HealthStatus processHealthStatus=new ProcessHealthStatus(utilsV1);
-        HealthStatus systemDHealthStatus=new SystemDHealthStatus(utilsV1);
-
-        List<HealthStatus> healthStatuses=new ArrayList<>();
-        healthStatuses.add(diskHealthStatus);
-        healthStatuses.add(fileHealthStatus);
-        healthStatuses.add(processHealthStatus);
-        healthStatuses.add(systemDHealthStatus);
-        HealthFacade healthFacade=new HealthFacade(utilsV1,healthStatuses);
+        HealthFacade healthFacade=new HealthFacade(utilsV1);
         healthFacade.processHealthStatus();
         logger.info("Software Terminated ");
     }

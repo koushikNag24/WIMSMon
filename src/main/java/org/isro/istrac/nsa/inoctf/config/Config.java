@@ -24,6 +24,12 @@ public class Config {
 
     private String epochFormatter;
 
+    private ProcessHealthStatusConf processHealthStatusConf;
+    private FileHealthStatusConf fileHealthStatusConf;
+    private SystemDHealthStatusConf systemDHealthStatusConf;
+    private DiskHealthStatusConf diskHealthStatusConf;
+    private String healthStatusLog;
+
 
     private  Optional<Config> loadConfiguration()  {
 
@@ -33,7 +39,7 @@ public class Config {
             config = mapper.readValue(CONFIG_FILE, Config.class);
         } catch (IOException e) {
             logger.error(e.getMessage());
-//            throw new RuntimeException(e);
+            throw new RuntimeException(e);
         }
           return Optional.ofNullable(config);
     }

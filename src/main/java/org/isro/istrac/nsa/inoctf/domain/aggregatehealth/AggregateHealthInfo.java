@@ -1,20 +1,15 @@
-package org.isro.istrac.nsa.inoctf.domain;
+package org.isro.istrac.nsa.inoctf.domain.aggregatehealth;
 
 import lombok.Getter;
-import lombok.NonNull;
 import lombok.Setter;
 import lombok.ToString;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.log4j.Logger;
 import org.isro.istrac.nsa.inoctf.strategy.LogStrategy;
 
 import java.time.Clock;
 import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
-
-import static java.time.ZoneOffset.UTC;
+import java.util.List;
 
 @Getter
 @Setter
@@ -26,7 +21,7 @@ public class AggregateHealthInfo {
     final static Logger logger = Logger.getLogger(AggregateHealthInfo.class);
     private int diskHealthStatus;
     private int fileHealthStatus;
-    private int processHealthStatus;
+    private List<ProcessAggregateHealthInfo> processAggregateHealthInfos;
     private int systemDHealthStatus;
     private String epoch;
     public void log(LogStrategy logStrategy){

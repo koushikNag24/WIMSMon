@@ -18,13 +18,12 @@ import static org.isro.istrac.nsa.inoctf.config.ConsoleColors.*;
 public class HealthFacade {
 
     final static Logger logger = Logger.getLogger(HealthFacade.class);
-    List<HealthStatus> healthStatuses;
+ 
     HealthStatusHead statusHead;
 
     Utils utils;
 
-    public HealthFacade(@NonNull Utils utils, List<HealthStatus> healthStatuses) {
-       this.healthStatuses=healthStatuses;
+    public HealthFacade(@NonNull Utils utils) {     
         this.utils=utils;
     }
     public void processHealthStatus(){
@@ -34,17 +33,32 @@ public class HealthFacade {
         long snoozeSec=0;
         long prevCfgFileUpdateEpoch=0;
         long currentCfgFileUpdateEpoch=appConfig.CONFIG_FILE.lastModified();
+        List<HealthStatus> healthStatuses=new ArrayList<>();
         while (isContinue) {
             if(appConfig.isConfigFileUpdated(prevCfgFileUpdateEpoch, currentCfgFileUpdateEpoch)){
                 appConfig = appConfig.getConfig(appConfig);
                 prevCfgFileUpdateEpoch=currentCfgFileUpdateEpoch;
-                logger.info(ConsoleColors.RED_BOLD_BRIGHT+" Config File loaded "+RESET);
+                logger.info(appConfig != null ? ConsoleColors.GREEN_BOLD_BRIGHT + " Config File loaded " + RESET : ConsoleColors.RED_BOLD_BRIGHT + " Config File Load Error " + RESET);
+
+                HealthStatus diskHealthStatus=new DiskHealthStatus(utils,appConfig.getDiskHealthStatusConf());
+                HealthStatus fileHealthStatus=new FileHealthStatus(utils,appConfig.getFileHealthStatusConf());
+                HealthStatus processHealthStatus=new ProcessHealthStatus(utils,appConfig.getProcessHealthStatusConf());
+                HealthStatus systemDHealthStatus=new SystemDHealthStatus(utils,appConfig.getSystemDHealthStatusConf());
+
+
+                healthStatuses.add(diskHealthStatus);
+                healthStatuses.add(fileHealthStatus);
+                healthStatuses.add(processHealthStatus);
+                healthStatuses.add(systemDHealthStatus);
             }
+          
+
 
 
 
             statusHead=new HealthStatusHead(appConfig,new ArrayList<>());
             for(HealthStatus aHealthStatus: healthStatuses){
+                
                 statusHead.addHealthStatus(aHealthStatus);
             }
 

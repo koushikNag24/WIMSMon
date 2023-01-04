@@ -44,11 +44,10 @@ public class HealthFacade {
 
 
             statusHead=new HealthStatusHead(appConfig,new ArrayList<>());
+            for(HealthStatus aHealthStatus: healthStatuses){
+                statusHead.addHealthStatus(aHealthStatus);
+            }
 
-            statusHead.addHealthStatus(diskHealthStatus);
-            statusHead.addHealthStatus(fileHealthStatus);
-            statusHead.addHealthStatus(processHealthStatus);
-            statusHead.addHealthStatus(systemDHealthStatus);
 
             statusHead.logHealthStatus();
 

@@ -8,10 +8,6 @@ import org.isro.istrac.nsa.inoctf.utils.UtilsImplV1;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Hello world!
- *
- */
 public class App 
 {
     final static Logger logger = Logger.getLogger(App.class);

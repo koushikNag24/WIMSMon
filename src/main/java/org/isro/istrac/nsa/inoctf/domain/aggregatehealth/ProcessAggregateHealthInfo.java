@@ -9,11 +9,9 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
+@AllArgsConstructor
 public class ProcessAggregateHealthInfo extends  BaseAggregateHealthInfo{
-    int a;
-    public ProcessAggregateHealthInfo(String name, int healthCode,int a) {
+    String name;
+    int healthCode;
 
-        super(name, healthCode);
-        this.a=a;
-    }
 }

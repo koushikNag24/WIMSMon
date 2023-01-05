@@ -16,7 +16,7 @@ import java.util.Optional;
 @Setter
 @Getter
 public class Config {
-    public final File CONFIG_FILE =new File("/opt/SoftyMon/config.yaml");
+    public final File CONFIG_FILE =new File("/opt/SoftwareConfigurations/SoftyMon/config.yaml");
     final static Logger logger = Logger.getLogger(Config.class);
     private long sleepSeconds;
 

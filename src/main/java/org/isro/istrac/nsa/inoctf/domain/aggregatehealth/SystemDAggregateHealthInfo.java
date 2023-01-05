@@ -5,10 +5,13 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-@ToString
+
 @Getter
 @Setter
+@ToString
 @AllArgsConstructor
-public  class BaseAggregateHealthInfo {
+public class SystemDAggregateHealthInfo extends  BaseAggregateHealthInfo{
+    String name;
+    int healthCode;
 
 }

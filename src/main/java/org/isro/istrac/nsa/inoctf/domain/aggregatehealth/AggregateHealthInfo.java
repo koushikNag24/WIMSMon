@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import org.apache.log4j.Logger;
+import org.isro.istrac.nsa.inoctf.config.Config;
 import org.isro.istrac.nsa.inoctf.strategy.LogStrategy;
 
 import java.time.Clock;
@@ -19,13 +20,14 @@ public class AggregateHealthInfo {
     @ToString.Exclude
     private DateTimeFormatter DATE_TIME_FORMATTER;
     final static Logger logger = Logger.getLogger(AggregateHealthInfo.class);
-    private int diskHealthStatus;
-    private int fileHealthStatus;
+    private List<DiskAggregateHealthInfo> diskAggregateHealthInfos;
+    private List<FileAggregateHealthInfo> fileAggregateHealthInfos;
     private List<ProcessAggregateHealthInfo> processAggregateHealthInfos;
-    private int systemDHealthStatus;
+    private List<SystemDAggregateHealthInfo> systemDAggregateHealthInfos;
     private String epoch;
+    private Config config;
     public void log(LogStrategy logStrategy){
-        logStrategy.log(this);
+        logStrategy.log(this,config);
     }
     public void setDateTimeFormatter(String formatter){
         this.DATE_TIME_FORMATTER=DateTimeFormatter.ofPattern(formatter);
@@ -33,11 +35,10 @@ public class AggregateHealthInfo {
     public void setEpoch() {
         try {
            LocalDateTime currentEpoch=LocalDateTime.now(Clock.systemUTC());
-           String formattedCurrentEpoch=currentEpoch.format(DATE_TIME_FORMATTER);
-            this.epoch = formattedCurrentEpoch;
+           this.epoch = currentEpoch.format(DATE_TIME_FORMATTER);
         }catch (Exception e){
             logger.error("Could not Parse Epoch");
-            System.out.println(e.getCause());
+
         }
     }
 }

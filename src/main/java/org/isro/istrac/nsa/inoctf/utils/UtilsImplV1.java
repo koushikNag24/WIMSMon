@@ -27,10 +27,7 @@ public class UtilsImplV1 implements Utils {
         }
     }
 
-    @Override
-    public int fetchStatus() {
-        return new Random().nextInt() %2==0? Health.GOOD.getHealthCode() :Health.BAD.getHealthCode();
-    }
+
 
     @Override
     public List<String> getCommandResult(String command) {
@@ -47,9 +44,7 @@ public class UtilsImplV1 implements Utils {
             }
             boolean exitVal = process.waitFor(1,TimeUnit.SECONDS);
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
+        } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
         return  commandResult;

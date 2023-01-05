@@ -45,23 +45,40 @@ public class FileLogStrategy implements LogStrategy{
     }
     private static String getHealthString(@NonNull AggregateHealthInfo healthInfo){
         StringBuilder healthString =new StringBuilder();
-        for(DiskAggregateHealthInfo diskAggregateHealthInfo: healthInfo.getDiskAggregateHealthInfos()){
-            healthString.append(diskAggregateHealthInfo.getName()).append(File.pathSeparatorChar).append(diskAggregateHealthInfo.getHealthCode()).append(COMA);
-        }
-        for(FileAggregateHealthInfo fileAggregateHealthInfo: healthInfo.getFileAggregateHealthInfos()){
-            healthString.append(fileAggregateHealthInfo.getName()).append(File.pathSeparatorChar).append(fileAggregateHealthInfo.getHealthCode()).append(COMA);
-        }
-        for(ProcessAggregateHealthInfo processAggregateHealthInfo: healthInfo.getProcessAggregateHealthInfos()){
-            healthString.append(processAggregateHealthInfo.getName()).append(File.pathSeparatorChar).append(processAggregateHealthInfo.getHealthCode()).append(COMA);
-        }
-        for(SystemDAggregateHealthInfo systemDAggregateHealthInfo: healthInfo.getSystemDAggregateHealthInfos()){
-            healthString.append(systemDAggregateHealthInfo.getName()).append(File.pathSeparatorChar).append(systemDAggregateHealthInfo.getHealthCode()).append(COMA);
-        }
+        populateDiskHealth(healthInfo, healthString);
+        populateFileHealth(healthInfo, healthString);
+        populateProcessHealth(healthInfo, healthString);
+        populateSystemDHealth(healthInfo, healthString);
         healthString.append("epoch").append(File.pathSeparatorChar).append(healthInfo.getEpoch());
         healthString.append(NEXT_LINE);
         return healthString.toString();
     }
-private String padStringWithZero(String inputString,int length){
+
+    private static void populateSystemDHealth(AggregateHealthInfo healthInfo, StringBuilder healthString) {
+        for(SystemDAggregateHealthInfo systemDAggregateHealthInfo: healthInfo.getSystemDAggregateHealthInfos()){
+            healthString.append(systemDAggregateHealthInfo.getName()).append(File.pathSeparatorChar).append(systemDAggregateHealthInfo.getHealthCode()).append(COMA);
+        }
+    }
+
+    private static void populateProcessHealth(AggregateHealthInfo healthInfo, StringBuilder healthString) {
+        for(ProcessAggregateHealthInfo processAggregateHealthInfo: healthInfo.getProcessAggregateHealthInfos()){
+            healthString.append(processAggregateHealthInfo.getName()).append(File.pathSeparatorChar).append(processAggregateHealthInfo.getHealthCode()).append(COMA);
+        }
+    }
+
+    private static void populateFileHealth(AggregateHealthInfo healthInfo, StringBuilder healthString) {
+        for(FileAggregateHealthInfo fileAggregateHealthInfo: healthInfo.getFileAggregateHealthInfos()){
+            healthString.append(fileAggregateHealthInfo.getName()).append(File.pathSeparatorChar).append(fileAggregateHealthInfo.getHealthCode()).append(COMA);
+        }
+    }
+
+    private static void populateDiskHealth(AggregateHealthInfo healthInfo, StringBuilder healthString) {
+        for(DiskAggregateHealthInfo diskAggregateHealthInfo: healthInfo.getDiskAggregateHealthInfos()){
+            healthString.append(diskAggregateHealthInfo.getName()).append(File.pathSeparatorChar).append(diskAggregateHealthInfo.getHealthCode()).append(COMA);
+        }
+    }
+
+    private String padStringWithZero(String inputString,int length){
     return String.format("%1$" + length + "s", inputString).replace(' ', '0');
 }
 }

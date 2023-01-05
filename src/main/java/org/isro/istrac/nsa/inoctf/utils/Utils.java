@@ -7,7 +7,7 @@ import java.util.List;
 public interface Utils {
     void snooze(long snoozeSec) ;
 
-    int fetchStatus();
+
 
     List<String> getCommandResult(String command) throws OsCommandExecException;
 }

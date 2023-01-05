@@ -3,17 +3,10 @@ package org.isro.istrac.nsa.inoctf.domain;
 import lombok.NonNull;
 import org.apache.log4j.Logger;
 import org.isro.istrac.nsa.inoctf.config.Config;
-import org.isro.istrac.nsa.inoctf.config.ConsoleColors;
-import org.isro.istrac.nsa.inoctf.exception.ConfigException;
 import org.isro.istrac.nsa.inoctf.utils.Utils;
-import org.isro.istrac.nsa.inoctf.utils.UtilsImplV1;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-
-import static org.isro.istrac.nsa.inoctf.config.ConsoleColors.*;
 
 public class HealthFacade {
 
@@ -49,29 +42,17 @@ public class HealthFacade {
                 healthStatuses.add(processHealthStatus);
                 healthStatuses.add(systemDHealthStatus);
             }
-          
-
-
-
-
             statusHead=new HealthStatusHead(appConfig,new ArrayList<>());
             for(HealthStatus aHealthStatus: healthStatuses){
                 
                 statusHead.addHealthStatus(aHealthStatus);
             }
-
-
             statusHead.logHealthStatus();
 
             snoozeSec=appConfig.getSleepSeconds();
             utils.snooze(snoozeSec);
             isContinue=Boolean.parseBoolean(appConfig.getIsContinue());
             currentCfgFileUpdateEpoch=appConfig.CONFIG_FILE.lastModified();
-
-
         }
     }
-
-
-
 }

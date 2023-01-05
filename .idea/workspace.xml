@@ -5,9 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="628be7e1-4701-4c6a-b1ad-5c3c61849426" name="Changes" comment="Added the following features:-&#10;1. Added File Save&#10;2.Added other log processing">
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/FileHealthStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/FileHealthStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/HealthFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/HealthFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/HealthStatusHead.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/HealthStatusHead.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/strategy/FileLogStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/strategy/FileLogStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/utils/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/utils/UtilsImplV1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/utils/UtilsImplV1.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,20 +55,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "LombokPluginIS_LOMBOK_JPS_FIX_ENABLED": "true",
-    "LombokPluginIS_LOMBOK_VERSION_CHECK_Enabled": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "extract.method.default.visibility": "public",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.editor"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;LombokPluginIS_LOMBOK_JPS_FIX_ENABLED&quot;: &quot;true&quot;,
+    &quot;LombokPluginIS_LOMBOK_VERSION_CHECK_Enabled&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;extract.method.default.visibility&quot;: &quot;public&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="org.isro.istrac.nsa.inoctf.utils" />
@@ -141,7 +143,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672919804655</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Added the following features:-&#10;1. Added File Save&#10;2.Added other log processing">
+      <created>1672920167361</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1672920167361</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">

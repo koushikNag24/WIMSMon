@@ -47,7 +47,6 @@ public class Config {
         Optional<Config> optionalAppConfig= appConfig.loadConfiguration();
         try {
             appConfig =optionalAppConfig.orElseThrow(()->new ConfigException("Software Configuration Read Error"));
-            logger.info(ConsoleColors.CYAN_BOLD_BRIGHT+appConfig+ ConsoleColors.RESET);
         } catch (ConfigException e) {
             logger.info(e.getMessage());
         }

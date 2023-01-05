@@ -36,10 +36,8 @@ public class HealthFacade {
         List<HealthStatus> healthStatuses=new ArrayList<>();
         while (isContinue) {
             if(appConfig.isConfigFileUpdated(prevCfgFileUpdateEpoch, currentCfgFileUpdateEpoch)){
-                appConfig = appConfig.getConfig(appConfig);
+                appConfig = Config.getConfig(appConfig);
                 prevCfgFileUpdateEpoch=currentCfgFileUpdateEpoch;
-                logger.info(appConfig != null ? ConsoleColors.GREEN_BOLD_BRIGHT + " Config File loaded " + RESET : ConsoleColors.RED_BOLD_BRIGHT + " Config File Load Error " + RESET);
-
                 HealthStatus diskHealthStatus=new DiskHealthStatus(utils,appConfig.getDiskHealthStatusConf());
                 HealthStatus fileHealthStatus=new FileHealthStatus(utils,appConfig.getFileHealthStatusConf());
                 HealthStatus processHealthStatus=new ProcessHealthStatus(utils,appConfig.getProcessHealthStatusConf());
@@ -67,7 +65,7 @@ public class HealthFacade {
 
             snoozeSec=appConfig.getSleepSeconds();
             utils.snooze(snoozeSec);
-            isContinue=Boolean.valueOf(appConfig.getIsContinue());
+            isContinue=Boolean.parseBoolean(appConfig.getIsContinue());
             currentCfgFileUpdateEpoch=appConfig.CONFIG_FILE.lastModified();
 
 

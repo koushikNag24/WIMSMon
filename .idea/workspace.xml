@@ -4,24 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="628be7e1-4701-4c6a-b1ad-5c3c61849426" name="Changes" comment="Refactored Project Design Pattern with no Error">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/aggregatehealth/DiskAggregateHealthInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/aggregatehealth/FileAggregateHealthInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/aggregatehealth/SystemDAggregateHealthInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/config/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/config/Config.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/DiskHealthStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/DiskHealthStatus.java" afterDir="false" />
+    <list default="true" id="628be7e1-4701-4c6a-b1ad-5c3c61849426" name="Changes" comment="Added the following features:-&#10;1. Added File Save&#10;2.Added other log processing">
       <change beforePath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/FileHealthStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/FileHealthStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/HealthStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/HealthStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/HealthFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/HealthFacade.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/HealthStatusHead.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/HealthStatusHead.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/ProcessHealthStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/ProcessHealthStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/SystemDHealthStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/SystemDHealthStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/aggregatehealth/AggregateHealthInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/aggregatehealth/AggregateHealthInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/aggregatehealth/BaseAggregateHealthInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/aggregatehealth/BaseAggregateHealthInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/aggregatehealth/ProcessAggregateHealthInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/aggregatehealth/ProcessAggregateHealthInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/strategy/DbmsLogStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/strategy/DbmsLogStrategy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/strategy/FileLogStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/strategy/FileLogStrategy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/strategy/LogStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/strategy/LogStrategy.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,14 +127,29 @@
       <option name="project" value="LOCAL" />
       <updated>1672832920026</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Added the following features:-&#10;1. Added File Save&#10;2.Added other log processing">
+      <created>1672919734401</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1672919734401</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Added the following features:-&#10;1. Added File Save&#10;2.Added other log processing">
+      <created>1672919804655</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1672919804655</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initialized project" />
     <MESSAGE value="Refactored Project With the following Design Patterns:-&#10;1. Strategy Pattern&#10;2. Facade Pattern&#10;3.Composite Pattern" />
     <MESSAGE value="Refactored Project Design Pattern with no Error" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactored Project Design Pattern with no Error" />
+    <MESSAGE value="Added the following features:-&#10;1. Added File Save&#10;2.Added other log processing" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added the following features:-&#10;1. Added File Save&#10;2.Added other log processing" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

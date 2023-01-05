@@ -33,7 +33,6 @@ public class FileHealthStatus implements HealthStatus{
         this.utils = utils;
     }
     public void logHealthStatus() throws InternalAggregateMonException, IOException {
-        logger.info(" Processing File Health Status");
         List<FileAggregateHealthInfo> fileAggregateHealthInfos = new ArrayList<>();
         List<MonFile> filesToMonitor = config.getMonFiles();
         for(MonFile aMonFile : filesToMonitor ){

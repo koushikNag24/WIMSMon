@@ -34,7 +34,6 @@ public class HealthStatusHead implements HealthStatus{
         aggregateHealthInfo.setConfig(config);
         aggregateHealthInfo.setDateTimeFormatter(config.getEpochFormatter());
         aggregateHealthInfo.setEpoch();
-        logger.debug(aggregateHealthInfo.toString());
         aggregateHealthInfo.log(new FileLogStrategy());
 
     }

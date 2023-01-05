@@ -1,27 +1,21 @@
 package org.isro.istrac.nsa.inoctf;
 
-import lombok.extern.slf4j.Slf4j;
-import org.isro.istrac.nsa.inoctf.config.Config;
-import org.isro.istrac.nsa.inoctf.exception.ConfigurationException;
+import org.apache.log4j.Logger;
+import org.isro.istrac.nsa.inoctf.domain.*;
+import org.isro.istrac.nsa.inoctf.utils.Utils;
+import org.isro.istrac.nsa.inoctf.utils.UtilsImplV1;
 
-import java.io.IOException;
-
-/**
- * Hello world!
- *
- */
+import java.util.ArrayList;
+import java.util.List;
 
 public class App 
 {
-    public static void main( String[] args ) {
-        System.out.println("Hello World!");
-        Config config;
-        try {
-            config = Config.loadConfiguration().orElseThrow(() -> new ConfigurationException("Configuration Load Error"));
-        } catch (IOException | ConfigurationException e) {
-            throw new RuntimeException(e);
-        }
-        System.out.println(config);
-
+    final static Logger logger = Logger.getLogger(App.class);
+    public static void main( String[] args )
+    {
+        Utils utilsV1=new UtilsImplV1();
+        HealthFacade healthFacade=new HealthFacade(utilsV1);
+        healthFacade.processHealthStatus();
+        logger.info("Software Terminated ");
     }
 }

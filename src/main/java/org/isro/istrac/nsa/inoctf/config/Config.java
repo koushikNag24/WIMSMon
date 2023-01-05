@@ -1,31 +1,60 @@
 package org.isro.istrac.nsa.inoctf.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
+import lombok.*;
+import org.apache.log4j.Logger;
+import org.isro.istrac.nsa.inoctf.exception.ConfigException;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Optional;
+
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
 @Setter
 @Getter
-@ToString
 public class Config {
+    public final File CONFIG_FILE =new File("/opt/SoftyMon/config.yaml");
+    final static Logger logger = Logger.getLogger(Config.class);
+    private long sleepSeconds;
 
-    private static final String configFile="/home/lgmdev/IdeaProjects/WIMSMon/src/main/resources/config.json";
-    private  int delayTimeInSeconds;
-    private int lastUpdatedPermissibleIntervalInSeconds;
-    private List<String> systemCtlProcesses;
-    private List<String> filesToMonitor;
-    private HashMap<String,Integer> processConfig;
-    private String statusFile;
+    private String isContinue;
 
-    public static Optional<Config> loadConfiguration() throws IOException {
-        ObjectMapper objectMapper=new ObjectMapper();
-        Config config = objectMapper.readValue(new File(configFile), Config.class);
-        return Optional.ofNullable(config);
+    private String epochFormatter;
+
+    private ProcessHealthStatusConf processHealthStatusConf;
+    private FileHealthStatusConf fileHealthStatusConf;
+    private SystemDHealthStatusConf systemDHealthStatusConf;
+    private DiskHealthStatusConf diskHealthStatusConf;
+    private String healthStatusLog;
+
+
+    private  Optional<Config> loadConfiguration()  {
+
+        ObjectMapper  mapper=new ObjectMapper(new YAMLFactory());
+        Config config = null;
+        try {
+            config = mapper.readValue(CONFIG_FILE, Config.class);
+        } catch (IOException e) {
+            logger.error(e.getMessage());
+            throw new RuntimeException(e);
+        }
+          return Optional.ofNullable(config);
     }
+    public static Config getConfig(Config appConfig) {
+        Optional<Config> optionalAppConfig= appConfig.loadConfiguration();
+        try {
+            appConfig =optionalAppConfig.orElseThrow(()->new ConfigException("Software Configuration Read Error"));
+            logger.info(ConsoleColors.CYAN_BOLD_BRIGHT+appConfig+ ConsoleColors.RESET);
+        } catch (ConfigException e) {
+            logger.info(e.getMessage());
+        }
+        return appConfig;
+    }
+    public boolean isConfigFileUpdated(long prevCfgFileUpdateEpoch, long currentCfgFileUpdateEpoch) {
+        return prevCfgFileUpdateEpoch != currentCfgFileUpdateEpoch;
+    }
+
 }

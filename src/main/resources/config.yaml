@@ -1,0 +1,24 @@
+sleepSeconds : 5
+isContinue : true
+epochFormatter : dd-MM-yyyy HH:mm:ss
+processHealthStatusConf:
+  processMonCommand : ps -ef | grep -v grep | grep process_name
+  processList :
+    - python
+    - gedit
+fileHealthStatusConf :
+  monFiles:
+    - file : /home/koushik/DS_N_Algo/BoardPath/BoardPathArray.java
+      permissibleUpdateWindowInSec : 5
+    - file : /home/koushik/DS_N_Algo/BoardPath/BoardPathArray.class
+      permissibleUpdateWindowInSec: 3
+
+systemDHealthStatusConf:
+  systemMonCommand : Systemctl status service_name
+  serviceList :
+    - postgresql.service
+    - postgresql@14-main.service
+diskHealthStatusConf :
+  diskMonCommand : df -k
+
+healthStatusLog : /opt/HealthMonLog/

@@ -1,24 +1,27 @@
-sleepSeconds : 5
+sleepSeconds : 3
 isContinue : true
 epochFormatter : dd-MM-yyyy HH:mm:ss
 processHealthStatusConf:
   processMonCommand : ps -ef | grep -v grep | grep process_name
   processList :
-    - python
+    - calculator
     - gedit
 fileHealthStatusConf :
   monFiles:
-    - file : /home/koushik/DS_N_Algo/BoardPath/BoardPathArray.java
+    - file : /home/lgmdev/MeosarLog/Meosar_Backend_2.log
       permissibleUpdateWindowInSec : 5
-    - file : /home/koushik/DS_N_Algo/BoardPath/BoardPathArray.class
-      permissibleUpdateWindowInSec: 3
+    - file : /home/lgmdev/MeosarLog/Meosar_Backend.log
+      permissibleUpdateWindowInSec: 5
 
 systemDHealthStatusConf:
-  systemMonCommand : Systemctl status service_name
+  systemMonCommand : systemctl status service_name
   serviceList :
     - postgresql.service
     - postgresql@14-main.service
 diskHealthStatusConf :
   diskMonCommand : df -k
 
-healthStatusLog : /opt/HealthMonLog/
+showEpoch : true
+showEpochKeyWithStatus : true
+showKeyWithStatus : true
+healthStatusLogArea : /home/lgmdev/MeosarLog/

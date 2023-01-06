@@ -3,48 +3,50 @@ package org.isro.istrac.nsa.inoctf.domain;
 import lombok.NonNull;
 import org.apache.log4j.Logger;
 import org.isro.istrac.nsa.inoctf.config.SystemDHealthStatusConf;
-import org.isro.istrac.nsa.inoctf.domain.aggregatehealth.ProcessAggregateHealthInfo;
+import org.isro.istrac.nsa.inoctf.domain.aggregatehealth.AggregateHealthInfo;
+import org.isro.istrac.nsa.inoctf.domain.aggregatehealth.BaseAggregateHealthInfo;
 import org.isro.istrac.nsa.inoctf.domain.aggregatehealth.SystemDAggregateHealthInfo;
-import org.isro.istrac.nsa.inoctf.exception.InternalAggregateMonException;
 import org.isro.istrac.nsa.inoctf.exception.OsCommandExecException;
 import org.isro.istrac.nsa.inoctf.utils.Utils;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import static org.isro.istrac.nsa.inoctf.config.ConsoleColors.RED_BOLD_BRIGHT;
-import static org.isro.istrac.nsa.inoctf.config.ConsoleColors.RESET;
 
 public class SystemDHealthStatus implements  HealthStatus{
     public static final String SERVICE_NAME_PLACE_HOLDER = "service_name";
     public static final String ACTIVE_RUNNING = "active (running)";
     public static final String ACTIVE = "Active:";
-    private SystemDHealthStatusConf config;
-    private Utils utils;
-    public SystemDHealthStatus(@NonNull Utils utils,@NonNull SystemDHealthStatusConf config) {
+    private final SystemDHealthStatusConf config;
+    private final Utils utils;
+
+    AggregateHealthInfo aggregateHealthInfo;
+    public SystemDHealthStatus(@NonNull Utils utils,@NonNull SystemDHealthStatusConf config,@NonNull AggregateHealthInfo aggregateHealthInfo) {
         this.config=config;
+        this.aggregateHealthInfo=aggregateHealthInfo;
         this.utils = utils;
     }
     final static Logger logger = Logger.getLogger(SystemDHealthStatus.class);
 
-    public void logHealthStatus() throws InternalAggregateMonException {
-        List<SystemDAggregateHealthInfo> processAggregateHealthInfos = new ArrayList<>();
-        List<String> systemDResult;
+    public void logHealthStatus() {
+
+        List<BaseAggregateHealthInfo> processAggregateHealthInfos = new ArrayList<>();
+        List<String> systemDResult = new ArrayList<>();
         List<String> systemServiceToMonitor = config.getServiceList();
         String systemCmd=config.getSystemMonCommand();
+        if(systemServiceToMonitor!=null){
         for (String systemDToMonitor : systemServiceToMonitor) {
             String monCommand = systemCmd.replace(SERVICE_NAME_PLACE_HOLDER,systemDToMonitor);
             try {
                 systemDResult = utils.getCommandResult(monCommand);
             } catch (OsCommandExecException e) {
-                throw new RuntimeException(e);
+                logger.error(e.toString());
             }
             int systemDHealth=processSystemDHealth(systemDResult);
-            SystemDAggregateHealthInfo healthInfo = new SystemDAggregateHealthInfo(systemDToMonitor, systemDHealth);
+            BaseAggregateHealthInfo healthInfo = new SystemDAggregateHealthInfo(systemDToMonitor, systemDHealth);
             processAggregateHealthInfos.add(healthInfo);
             aggregateHealthInfo.setSystemDAggregateHealthInfos(processAggregateHealthInfos);
+        }
         }
     }
 

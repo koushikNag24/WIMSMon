@@ -10,13 +10,16 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Optional;
 
+import static org.isro.istrac.nsa.inoctf.config.ConsoleColors.RED_BOLD_BRIGHT;
+import static org.isro.istrac.nsa.inoctf.config.ConsoleColors.RESET;
+
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
 @Getter
 public class Config {
-    public final File CONFIG_FILE =new File("/opt/SoftwareConfigurations/SoftyMon/config.yaml");
+    public final File CONFIG_FILE =new File("/opt/SoftwareConfigurations/SoftwareMon/config.yaml");
     final static Logger logger = Logger.getLogger(Config.class);
     private long sleepSeconds;
 
@@ -28,7 +31,10 @@ public class Config {
     private FileHealthStatusConf fileHealthStatusConf;
     private SystemDHealthStatusConf systemDHealthStatusConf;
     private DiskHealthStatusConf diskHealthStatusConf;
-    private String healthStatusLog;
+    private String healthStatusLogArea;
+    private String showKeyWithStatus;
+    private  String showEpochKeyWithStatus;
+    private String showEpoch;
 
 
     private  Optional<Config> loadConfiguration()  {
@@ -39,20 +45,20 @@ public class Config {
             config = mapper.readValue(CONFIG_FILE, Config.class);
         } catch (IOException e) {
             logger.error(e.getMessage());
-            throw new RuntimeException(e);
+//            throw new RuntimeException(e);
         }
           return Optional.ofNullable(config);
     }
     public static Config getConfig(Config appConfig) {
         Optional<Config> optionalAppConfig= appConfig.loadConfiguration();
         try {
-            appConfig =optionalAppConfig.orElseThrow(()->new ConfigException("Software Configuration Read Error"));
+            appConfig =optionalAppConfig.orElseThrow(()->new ConfigException("Invalid Software Configuration"));
         } catch (ConfigException e) {
-            logger.info(e.getMessage());
+            logger.info(RED_BOLD_BRIGHT+ " [ Tentative Reason : Configuration File is not in YAML format as expected by the software! ] "+e.getMessage()+RESET);
         }
         return appConfig;
     }
-    public boolean isConfigFileUpdated(long prevCfgFileUpdateEpoch, long currentCfgFileUpdateEpoch) {
+    public boolean isConfigFilePrevCurrentUpdateTimeNotSame(long prevCfgFileUpdateEpoch, long currentCfgFileUpdateEpoch) {
         return prevCfgFileUpdateEpoch != currentCfgFileUpdateEpoch;
     }
 

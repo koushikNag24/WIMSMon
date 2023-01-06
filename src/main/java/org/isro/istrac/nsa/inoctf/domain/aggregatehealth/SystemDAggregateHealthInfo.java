@@ -1,6 +1,5 @@
 package org.isro.istrac.nsa.inoctf.domain.aggregatehealth;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -9,9 +8,11 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-@AllArgsConstructor
-public class SystemDAggregateHealthInfo extends  BaseAggregateHealthInfo{
-    String name;
-    int healthCode;
 
+public class SystemDAggregateHealthInfo extends  BaseAggregateHealthInfo{
+
+
+    public SystemDAggregateHealthInfo(String name, int healthCode) {
+        super(name, healthCode);
+    }
 }

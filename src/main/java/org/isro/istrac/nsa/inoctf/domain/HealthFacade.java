@@ -3,10 +3,14 @@ package org.isro.istrac.nsa.inoctf.domain;
 import lombok.NonNull;
 import org.apache.log4j.Logger;
 import org.isro.istrac.nsa.inoctf.config.Config;
+import org.isro.istrac.nsa.inoctf.domain.aggregatehealth.AggregateHealthInfo;
 import org.isro.istrac.nsa.inoctf.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.isro.istrac.nsa.inoctf.config.ConsoleColors.GREEN_BOLD_BRIGHT;
+import static org.isro.istrac.nsa.inoctf.config.ConsoleColors.RESET;
 
 public class HealthFacade {
 
@@ -23,28 +27,21 @@ public class HealthFacade {
 
         boolean isContinue=true;
         Config appConfig=new Config();
-        long snoozeSec=0;
+        long snoozeSec;
         long prevCfgFileUpdateEpoch=0;
         long currentCfgFileUpdateEpoch=appConfig.CONFIG_FILE.lastModified();
-        List<HealthStatus> healthStatuses=new ArrayList<>();
+
         while (isContinue) {
-            if(appConfig.isConfigFileUpdated(prevCfgFileUpdateEpoch, currentCfgFileUpdateEpoch)){
+            AggregateHealthInfo aggregateHealthInfo = new AggregateHealthInfo();
+            List<HealthStatus> healthStatuses=new ArrayList<>();
+            if(appConfig.isConfigFilePrevCurrentUpdateTimeNotSame(prevCfgFileUpdateEpoch, currentCfgFileUpdateEpoch)){
                 appConfig = Config.getConfig(appConfig);
                 prevCfgFileUpdateEpoch=currentCfgFileUpdateEpoch;
-                HealthStatus diskHealthStatus=new DiskHealthStatus(utils,appConfig.getDiskHealthStatusConf());
-                HealthStatus fileHealthStatus=new FileHealthStatus(utils,appConfig.getFileHealthStatusConf());
-                HealthStatus processHealthStatus=new ProcessHealthStatus(utils,appConfig.getProcessHealthStatusConf());
-                HealthStatus systemDHealthStatus=new SystemDHealthStatus(utils,appConfig.getSystemDHealthStatusConf());
-
-
-                healthStatuses.add(diskHealthStatus);
-                healthStatuses.add(fileHealthStatus);
-                healthStatuses.add(processHealthStatus);
-                healthStatuses.add(systemDHealthStatus);
+                logger.info(GREEN_BOLD_BRIGHT+"[ Configuration File loaded ]"+RESET);
             }
-            statusHead=new HealthStatusHead(appConfig,new ArrayList<>());
+            loadConfigStates(appConfig, healthStatuses,aggregateHealthInfo);
+            statusHead=new HealthStatusHead(aggregateHealthInfo,appConfig,new ArrayList<>());
             for(HealthStatus aHealthStatus: healthStatuses){
-                
                 statusHead.addHealthStatus(aHealthStatus);
             }
             statusHead.logHealthStatus();
@@ -53,6 +50,44 @@ public class HealthFacade {
             utils.snooze(snoozeSec);
             isContinue=Boolean.parseBoolean(appConfig.getIsContinue());
             currentCfgFileUpdateEpoch=appConfig.CONFIG_FILE.lastModified();
+
         }
+    }
+
+    private void loadConfigStates(Config appConfig, List<HealthStatus> healthStatuses,AggregateHealthInfo aggregateHealthInfo) {
+        loadSystemDConfigState(appConfig, healthStatuses,aggregateHealthInfo);
+        loadDiskConfigStates(appConfig, healthStatuses,aggregateHealthInfo);
+        loadFileConfigState(appConfig, healthStatuses,aggregateHealthInfo);
+        loadProcessConfigState(appConfig, healthStatuses,aggregateHealthInfo);
+    }
+
+    private void loadProcessConfigState(Config appConfig, List<HealthStatus> healthStatuses,AggregateHealthInfo aggregateHealthInfo) {
+        if(appConfig.getProcessHealthStatusConf()!=null){
+            HealthStatus processHealthStatus=new ProcessHealthStatus(utils, appConfig.getProcessHealthStatusConf(),aggregateHealthInfo);
+            healthStatuses.add(processHealthStatus);
+        }
+    }
+
+    private void loadFileConfigState(Config appConfig, List<HealthStatus> healthStatuses,AggregateHealthInfo aggregateHealthInfo) {
+        if(appConfig.getFileHealthStatusConf()!=null){
+            HealthStatus fileHealthStatus=new FileHealthStatus(utils, appConfig.getFileHealthStatusConf(),aggregateHealthInfo);
+            healthStatuses.add(fileHealthStatus);
+        }
+    }
+
+    private void loadDiskConfigStates(Config appConfig, List<HealthStatus> healthStatuses,AggregateHealthInfo aggregateHealthInfo) {
+        if(appConfig.getDiskHealthStatusConf()!=null){
+            HealthStatus diskHealthStatus=new DiskHealthStatus(utils, appConfig.getDiskHealthStatusConf(),aggregateHealthInfo);
+            healthStatuses.add(diskHealthStatus);
+        }
+    }
+
+    private void loadSystemDConfigState(Config appConfig, List<HealthStatus> healthStatuses,AggregateHealthInfo aggregateHealthInfo) {
+
+        if(appConfig.getSystemDHealthStatusConf()!=null){
+            HealthStatus systemDHealthStatus=new SystemDHealthStatus(utils, appConfig.getSystemDHealthStatusConf(),aggregateHealthInfo);
+            healthStatuses.add(systemDHealthStatus);
+        }
+
     }
 }

@@ -10,5 +10,6 @@ import lombok.ToString;
 @Setter
 @AllArgsConstructor
 public  class BaseAggregateHealthInfo {
-
+    protected String name;
+    protected int healthCode;
 }

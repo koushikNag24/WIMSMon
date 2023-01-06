@@ -5,26 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="628be7e1-4701-4c6a-b1ad-5c3c61849426" name="Changes" comment="Added exception to handles configuration choice from user">
+      <change beforePath="$PROJECT_DIR$/$HOME/software_mon_log.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/config/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/config/Config.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/DiskHealthStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/DiskHealthStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/FileHealthStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/FileHealthStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/HealthFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/HealthFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/HealthStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/HealthStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/HealthStatusHead.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/HealthStatusHead.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/ProcessHealthStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/ProcessHealthStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/SystemDHealthStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/SystemDHealthStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/aggregatehealth/AggregateHealthInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/aggregatehealth/AggregateHealthInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/aggregatehealth/BaseAggregateHealthInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/aggregatehealth/BaseAggregateHealthInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/aggregatehealth/DiskAggregateHealthInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/aggregatehealth/DiskAggregateHealthInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/aggregatehealth/FileAggregateHealthInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/aggregatehealth/FileAggregateHealthInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/aggregatehealth/ProcessAggregateHealthInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/aggregatehealth/ProcessAggregateHealthInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/aggregatehealth/SystemDAggregateHealthInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/aggregatehealth/SystemDAggregateHealthInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/strategy/FileLogStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/strategy/FileLogStrategy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/config.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/log4j.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/log4j.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/{$HOME}/software_mon_log.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,13 +84,26 @@
   <component name="RunManager">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.isro.istrac.nsa.inoctf.App" />
-      <module name="WIMSMon" />
+      <module name="SoftwareMon" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="org.isro.istrac.nsa.inoctf.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="SoftwareMon" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="SoftwareMon" />
+      <option name="filePath" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -182,7 +179,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673002328388</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Added exception to handles configuration choice from user">
+      <created>1673002342662</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1673002342662</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">

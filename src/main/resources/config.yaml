@@ -1,18 +1,23 @@
 sleepSeconds : 3
 isContinue : true
 epochFormatter : dd-MM-yyyy HH:mm:ss
+
+#The name of all the Processe(s) the software has to observe
 processHealthStatusConf:
   processMonCommand : ps -ef | grep -v grep | grep process_name
   processList :
-    - calculator
-    - gedit
+    - name : calculator
+      permissibleNoOfAliveInstance : 1
+    - name : gedit
+      permissibleNoOfAliveInstance : 1
+#The name of all the File(s) and it permissible Update Window the software has to observe
 fileHealthStatusConf :
   monFiles:
     - file : /home/lgmdev/MeosarLog/Meosar_Backend_2.log
       permissibleUpdateWindowInSec : 5
     - file : /home/lgmdev/MeosarLog/Meosar_Backend.log
       permissibleUpdateWindowInSec: 5
-
+#The name of all the Service(s) as "serviceList" the software has to observe
 systemDHealthStatusConf:
   systemMonCommand : systemctl status service_name
   serviceList :
@@ -21,19 +26,26 @@ systemDHealthStatusConf:
 diskHealthStatusConf :
   diskMonCommand : df -k
 
+#The Status will be logged from Highest Priority to Lowest Priority(Left to Right)
+# name : priority
+logPriorityMap:
+  calculator: 1
+  gedit: 2
+  df -k: 6
+  postgresql.service: 7
+  Meosar_Backend.log: 5
+  Meosar_Backend_2.log: 3
+  postgresql@14-main.service: 4
+
+
 showEpoch : true
 
 showEpochKeyWithStatus : true
 
 showKeyWithStatus : true
 
-logPriorityMap :
-  calculator : 1
-  gedit : 2
-  df -k : 3
-  postgresql.service : 4
-  Meosar_Backend.log : 5
-  Meosar_Backend_2.log : 6
-  postgresql@14-main.service : 7
 
+#area/name of the Health Output File in the format Software_DOY_YYYY_Monit.txt
 healthStatusLogArea : /home/lgmdev/MeosarLog/
+
+

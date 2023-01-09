@@ -14,7 +14,7 @@ import java.util.List;
 
 public class ProcessHealthStatusConf  {
     private String processMonCommand;
-    private List<String> processList;
+    private List<Process> processList;
 
 
 }

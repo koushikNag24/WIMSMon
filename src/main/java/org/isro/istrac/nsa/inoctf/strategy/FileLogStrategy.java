@@ -52,6 +52,14 @@ public class FileLogStrategy implements LogStrategy{
         } catch (IOException e) {
             logger.error(e.toString());
         }
+        cleanOldHealthFileIfDayChanged(config);
+    }
+    private static  void cleanOldHealthFileIfDayChanged(Config config){
+        LocalDateTime now=LocalDateTime.now();
+        String yesterdayDoy= String.valueOf(now.getDayOfYear()-1);
+        String currentYear= String.valueOf(now.getYear());
+        Path logFile=Paths.get(config.getHealthStatusLogArea()+File.separator+
+                STATUS_LOG_FILE_PREFIX+ FNAME_SEPERATOR + padStringWithZero(yesterdayDoy, DOY_DIGITS)+ FNAME_SEPERATOR +padStringWithZero(currentYear, YEAR_DIGITS)+ FNAME_SEPERATOR + STATUS_LOG_FILE_POSTFIX);
     }
     private static String getHealthString(@NonNull AggregateHealthInfo healthInfo,Config config){
         StringBuilder healthString =new StringBuilder();
@@ -91,7 +99,7 @@ public class FileLogStrategy implements LogStrategy{
 
     }
 
-    private String padStringWithZero(String inputString,int length){
+    private static String padStringWithZero(String inputString,int length){
     return String.format("%1$" + length + "s", inputString).replace(' ', PAD_CHAR);
 
 

@@ -3,6 +3,7 @@ package org.isro.istrac.nsa.inoctf.domain;
 import lombok.NonNull;
 import org.apache.log4j.Logger;
 import org.isro.istrac.nsa.inoctf.config.Config;
+import org.isro.istrac.nsa.inoctf.config.Process;
 import org.isro.istrac.nsa.inoctf.config.ProcessHealthStatusConf;
 import org.isro.istrac.nsa.inoctf.domain.aggregatehealth.AggregateHealthInfo;
 import org.isro.istrac.nsa.inoctf.domain.aggregatehealth.BaseAggregateHealthInfo;
@@ -31,21 +32,23 @@ public class ProcessHealthStatus implements HealthStatus {
     public void logHealthStatus() {
         List<String> processResult = new ArrayList<>();
         ProcessHealthStatusConf processHealthStatusConf=config.getProcessHealthStatusConf();
-        List<String> processesToMonitor = processHealthStatusConf.getProcessList();
+        List<Process> processesToMonitor = processHealthStatusConf.getProcessList();
         String processMonCommand = processHealthStatusConf.getProcessMonCommand();
         boolean performProcessHealthCheck=processesToMonitor!=null && processMonCommand!=null;
         if(performProcessHealthCheck) {
-            for (String aProcessToMonitor : processesToMonitor) {
-                String monCommand = processMonCommand.replace(PROCESS_NAME_PLACEHOLDER, aProcessToMonitor);
+            for (Process aProcessToMonitor : processesToMonitor) {
+                String processName=aProcessToMonitor.getName();
+                int permissibleNoOfAliveInstance=aProcessToMonitor.getPermissibleNoOfAliveInstance();
+                String monCommand = processMonCommand.replace(PROCESS_NAME_PLACEHOLDER, processName);
                 try {
                     processResult = utils.getCommandResult(monCommand);
                 } catch (OsCommandExecException e) {
                     logger.error(e.getMessage());
                 }
-                int processHealth = processResult.size() > 0 ? Health.GOOD.getHealthCode() : Health.BAD.getHealthCode();
+                int processHealth = processResult.size() == permissibleNoOfAliveInstance? Health.GOOD.getHealthCode() : Health.BAD.getHealthCode();
                 HashMap<String,Integer> logPriorityMap= (HashMap<String, Integer>) config.getLogPriorityMap();
-                int processHealthPriority=logPriorityMap.getOrDefault(aProcessToMonitor, DEFAULT_PRIORITY);
-                BaseAggregateHealthInfo healthInfo = new ProcessAggregateHealthInfo(aProcessToMonitor, processHealth,processHealthPriority);
+                int processHealthPriority=logPriorityMap.getOrDefault(processName, DEFAULT_PRIORITY);
+                BaseAggregateHealthInfo healthInfo = new ProcessAggregateHealthInfo(processName, processHealth,processHealthPriority);
                 aggregateHealthInfo.addAggregateHealthInfo(healthInfo);
 
             }

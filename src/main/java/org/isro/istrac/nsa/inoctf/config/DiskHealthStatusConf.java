@@ -1,12 +1,16 @@
 package org.isro.istrac.nsa.inoctf.config;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @ToString
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
-public class DiskHealthStatusConf {
+
+public class DiskHealthStatusConf  {
     private String diskMonCommand;
+
 }

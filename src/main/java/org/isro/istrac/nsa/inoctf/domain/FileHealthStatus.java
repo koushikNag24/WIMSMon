@@ -2,6 +2,7 @@ package org.isro.istrac.nsa.inoctf.domain;
 
 import lombok.NonNull;
 import org.apache.log4j.Logger;
+import org.isro.istrac.nsa.inoctf.config.Config;
 import org.isro.istrac.nsa.inoctf.config.FileHealthStatusConf;
 import org.isro.istrac.nsa.inoctf.config.MonFile;
 import org.isro.istrac.nsa.inoctf.domain.aggregatehealth.AggregateHealthInfo;
@@ -15,24 +16,26 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.time.Instant;
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+
+import static org.isro.istrac.nsa.inoctf.domain.DiskHealthStatus.DEFAULT_PRIORITY;
 
 public class FileHealthStatus implements HealthStatus{
 
     final static Logger logger = Logger.getLogger(FileHealthStatus.class);
-    private final FileHealthStatusConf config;
+    private final Config config;
      Utils utils;
 
     AggregateHealthInfo aggregateHealthInfo;
-    public FileHealthStatus(@NonNull Utils utils,@NonNull FileHealthStatusConf config,@NonNull AggregateHealthInfo aggregateHealthInfo) {
+    public FileHealthStatus(@NonNull Utils utils,@NonNull Config config,@NonNull AggregateHealthInfo aggregateHealthInfo) {
         this.config=config;
         this.aggregateHealthInfo=aggregateHealthInfo;
         this.utils = utils;
     }
     public void logHealthStatus() {
-        List<BaseAggregateHealthInfo> fileAggregateHealthInfos = new ArrayList<>();
-        List<MonFile> filesToMonitor = config.getMonFiles();
+        FileHealthStatusConf fileHealthStatusConf=config.getFileHealthStatusConf();
+        List<MonFile> filesToMonitor = fileHealthStatusConf.getMonFiles();
         if (filesToMonitor != null) {
             for (MonFile aMonFile : filesToMonitor) {
                 Path file = Paths.get(aMonFile.getFile());
@@ -51,11 +54,12 @@ public class FileHealthStatus implements HealthStatus{
                     fileHealthCode = Health.UNKNOWN.getHealthCode();
 
                 }
-
-                BaseAggregateHealthInfo fileAggregateHealthInfo = new FileAggregateHealthInfo(file.getFileName().toString(), fileHealthCode);
-                fileAggregateHealthInfos.add(fileAggregateHealthInfo);
+                HashMap<String,Integer> logPriorityMap= (HashMap<String, Integer>) config.getLogPriorityMap();
+                int fileHealthPriority=logPriorityMap.getOrDefault(String.valueOf(file.getFileName()),DEFAULT_PRIORITY);
+                BaseAggregateHealthInfo fileAggregateHealthInfo = new FileAggregateHealthInfo(file.getFileName().toString(), fileHealthCode,fileHealthPriority);
+                aggregateHealthInfo.addAggregateHealthInfo(fileAggregateHealthInfo);
             }
-            aggregateHealthInfo.setFileAggregateHealthInfos(fileAggregateHealthInfos);
+
         }
     }
 }

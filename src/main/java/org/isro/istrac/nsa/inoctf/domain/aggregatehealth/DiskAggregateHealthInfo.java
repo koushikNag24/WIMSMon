@@ -12,7 +12,7 @@ import lombok.ToString;
 public class DiskAggregateHealthInfo extends  BaseAggregateHealthInfo{
 
 
-    public DiskAggregateHealthInfo(String name, int healthCode) {
-        super(name, healthCode);
+    public DiskAggregateHealthInfo(String name, int healthCode,int priority) {
+        super(name, healthCode,priority);
     }
 }

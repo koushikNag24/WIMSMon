@@ -63,21 +63,21 @@ public class HealthFacade {
 
     private void loadProcessConfigState(Config appConfig, List<HealthStatus> healthStatuses,AggregateHealthInfo aggregateHealthInfo) {
         if(appConfig.getProcessHealthStatusConf()!=null){
-            HealthStatus processHealthStatus=new ProcessHealthStatus(utils, appConfig.getProcessHealthStatusConf(),aggregateHealthInfo);
+            HealthStatus processHealthStatus=new ProcessHealthStatus(utils, appConfig,aggregateHealthInfo);
             healthStatuses.add(processHealthStatus);
         }
     }
 
     private void loadFileConfigState(Config appConfig, List<HealthStatus> healthStatuses,AggregateHealthInfo aggregateHealthInfo) {
         if(appConfig.getFileHealthStatusConf()!=null){
-            HealthStatus fileHealthStatus=new FileHealthStatus(utils, appConfig.getFileHealthStatusConf(),aggregateHealthInfo);
+            HealthStatus fileHealthStatus=new FileHealthStatus(utils, appConfig,aggregateHealthInfo);
             healthStatuses.add(fileHealthStatus);
         }
     }
 
     private void loadDiskConfigStates(Config appConfig, List<HealthStatus> healthStatuses,AggregateHealthInfo aggregateHealthInfo) {
         if(appConfig.getDiskHealthStatusConf()!=null){
-            HealthStatus diskHealthStatus=new DiskHealthStatus(utils, appConfig.getDiskHealthStatusConf(),aggregateHealthInfo);
+            HealthStatus diskHealthStatus=new DiskHealthStatus(utils, appConfig,aggregateHealthInfo);
             healthStatuses.add(diskHealthStatus);
         }
     }
@@ -85,7 +85,7 @@ public class HealthFacade {
     private void loadSystemDConfigState(Config appConfig, List<HealthStatus> healthStatuses,AggregateHealthInfo aggregateHealthInfo) {
 
         if(appConfig.getSystemDHealthStatusConf()!=null){
-            HealthStatus systemDHealthStatus=new SystemDHealthStatus(utils, appConfig.getSystemDHealthStatusConf(),aggregateHealthInfo);
+            HealthStatus systemDHealthStatus=new SystemDHealthStatus(utils, appConfig,aggregateHealthInfo);
             healthStatuses.add(systemDHealthStatus);
         }
 

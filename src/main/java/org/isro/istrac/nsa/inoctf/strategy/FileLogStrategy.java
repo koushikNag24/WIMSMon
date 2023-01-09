@@ -13,6 +13,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.time.LocalDateTime;
+import java.util.Collections;
+import java.util.List;
 
 public class FileLogStrategy implements LogStrategy{
     public static final char PAD_CHAR = '0';
@@ -54,10 +56,9 @@ public class FileLogStrategy implements LogStrategy{
     private static String getHealthString(@NonNull AggregateHealthInfo healthInfo,Config config){
         StringBuilder healthString =new StringBuilder();
         boolean showKeyWithStatus=Boolean.parseBoolean(config.getShowKeyWithStatus());
-        populateDiskHealth(healthInfo, healthString,showKeyWithStatus);
-        populateFileHealth(healthInfo, healthString,showKeyWithStatus);
-        populateProcessHealth(healthInfo, healthString,showKeyWithStatus);
-        populateSystemDHealth(healthInfo, healthString,showKeyWithStatus);
+        List<BaseAggregateHealthInfo> aggregateHealthInfos=healthInfo.getAggregateHealthInfos();
+        Collections.sort(aggregateHealthInfos);
+        populateHealth(aggregateHealthInfos, healthString,showKeyWithStatus);
 
         boolean showEpoch=Boolean.parseBoolean(config.getShowEpoch());
         if(showEpoch){
@@ -68,63 +69,25 @@ public class FileLogStrategy implements LogStrategy{
                 healthString.append(healthInfo.getEpoch());
             }
         }else{
-            healthString.deleteCharAt(healthString.length() - 1);
+            if(healthString.length()>0){
+                healthString.deleteCharAt(healthString.length() - 1);
+            }
         }
 
         healthString.append(NEXT_LINE);
         return healthString.toString();
     }
 
-    private static void populateSystemDHealth(AggregateHealthInfo healthInfo, StringBuilder healthString,boolean showKeyWithStatus) {
+    private static void populateHealth(List<BaseAggregateHealthInfo> aggregateHealthInfos, StringBuilder healthString, boolean showKeyWithStatus) {
 
-        if(healthInfo.getSystemDAggregateHealthInfos()!=null) {
-            for (BaseAggregateHealthInfo systemDAggregateHealthInfo : healthInfo.getSystemDAggregateHealthInfos()) {
-                if(showKeyWithStatus){
-                    healthString.append(systemDAggregateHealthInfo.getName()).append(File.pathSeparatorChar).append(systemDAggregateHealthInfo.getHealthCode()).append(COMA);
-                }else {
-                    healthString.append(systemDAggregateHealthInfo.getHealthCode()).append(COMA);
-                }
-            }
-        }
-
-    }
-
-    private static void populateProcessHealth(AggregateHealthInfo healthInfo, StringBuilder healthString,boolean showKeyWithStatus) {
-        if(healthInfo.getProcessAggregateHealthInfos()!=null) {
-            for (BaseAggregateHealthInfo processAggregateHealthInfo : healthInfo.getProcessAggregateHealthInfos()) {
+            for (BaseAggregateHealthInfo aggregateHealthInfo : aggregateHealthInfos) {
                 if(showKeyWithStatus) {
-                    healthString.append(processAggregateHealthInfo.getName()).append(File.pathSeparatorChar).append(processAggregateHealthInfo.getHealthCode()).append(COMA);
+                    healthString.append(aggregateHealthInfo.getName()).append(File.pathSeparatorChar).append(aggregateHealthInfo.getHealthCode()).append(COMA);
                 }else{
-                    healthString.append(processAggregateHealthInfo.getHealthCode()).append(COMA);
+                    healthString.append(aggregateHealthInfo.getHealthCode()).append(COMA);
                 }
             }
-        }
 
-    }
-
-    private static void populateFileHealth(AggregateHealthInfo healthInfo, StringBuilder healthString,boolean showKeyWithStatus) {
-        if(healthInfo.getFileAggregateHealthInfos()!=null) {
-            for (BaseAggregateHealthInfo fileAggregateHealthInfo : healthInfo.getFileAggregateHealthInfos()) {
-                if(showKeyWithStatus) {
-                    healthString.append(fileAggregateHealthInfo.getName()).append(File.pathSeparatorChar).append(fileAggregateHealthInfo.getHealthCode()).append(COMA);
-                }else{
-                    healthString.append(fileAggregateHealthInfo.getHealthCode()).append(COMA);
-                }
-            }
-        }
-
-    }
-
-    private static void populateDiskHealth(AggregateHealthInfo healthInfo, StringBuilder healthString,boolean showKeyWithStatus) {
-        if (healthInfo.getDiskAggregateHealthInfos() != null) {
-            for (BaseAggregateHealthInfo diskAggregateHealthInfo : healthInfo.getDiskAggregateHealthInfos()) {
-                if(showKeyWithStatus) {
-                    healthString.append(diskAggregateHealthInfo.getName()).append(File.pathSeparatorChar).append(diskAggregateHealthInfo.getHealthCode()).append(COMA);
-                }else{
-                    healthString.append(diskAggregateHealthInfo.getHealthCode()).append(COMA);
-                }
-            }
-        }
 
     }
 

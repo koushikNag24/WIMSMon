@@ -22,6 +22,18 @@ diskHealthStatusConf :
   diskMonCommand : df -k
 
 showEpoch : true
+
 showEpochKeyWithStatus : true
+
 showKeyWithStatus : true
+
+logPriorityMap :
+  calculator : 1
+  gedit : 2
+  df -k : 3
+  postgresql.service : 4
+  Meosar_Backend.log : 5
+  Meosar_Backend_2.log : 6
+  postgresql@14-main.service : 7
+
 healthStatusLogArea : /home/lgmdev/MeosarLog/

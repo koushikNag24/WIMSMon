@@ -12,7 +12,7 @@ import lombok.ToString;
 public class ProcessAggregateHealthInfo extends  BaseAggregateHealthInfo{
 
 
-    public ProcessAggregateHealthInfo(String name, int healthCode) {
-        super(name, healthCode);
+    public ProcessAggregateHealthInfo(String name, int healthCode,int priority) {
+        super(name, healthCode,priority);
     }
 }

@@ -9,7 +9,17 @@ import lombok.ToString;
 @Getter
 @Setter
 @AllArgsConstructor
-public  class BaseAggregateHealthInfo {
+public  class BaseAggregateHealthInfo implements Comparable<BaseAggregateHealthInfo>{
     protected String name;
     protected int healthCode;
+    protected int priority;
+    @Override
+    public int compareTo(BaseAggregateHealthInfo healthInfo){
+        if(healthInfo.getPriority()-this.getPriority()==0){
+            return this.getName().compareTo(healthInfo.getName());
+        }
+        return Integer.compare(healthInfo.getPriority(),this.getPriority());
+    }
+
+
 }

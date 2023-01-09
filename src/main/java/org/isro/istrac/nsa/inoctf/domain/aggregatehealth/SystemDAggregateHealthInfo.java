@@ -12,7 +12,7 @@ import lombok.ToString;
 public class SystemDAggregateHealthInfo extends  BaseAggregateHealthInfo{
 
 
-    public SystemDAggregateHealthInfo(String name, int healthCode) {
-        super(name, healthCode);
+    public SystemDAggregateHealthInfo(String name, int healthCode,int priority) {
+        super(name, healthCode,priority);
     }
 }

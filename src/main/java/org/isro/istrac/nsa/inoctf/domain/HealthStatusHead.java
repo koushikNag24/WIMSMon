@@ -8,6 +8,7 @@ import org.isro.istrac.nsa.inoctf.exception.InternalAggregateMonException;
 import org.isro.istrac.nsa.inoctf.strategy.FileLogStrategy;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @AllArgsConstructor
@@ -23,7 +24,10 @@ public class HealthStatusHead implements HealthStatus{
         this.healthStatuses.remove(healthStatus);
     }
     public void logHealthStatus() {
-
+        aggregateHealthInfo.setAggregateHealthInfos(new ArrayList<>());
+        aggregateHealthInfo.setConfig(config);
+        aggregateHealthInfo.setDateTimeFormatter(config.getEpochFormatter());
+        aggregateHealthInfo.setEpoch();
         for (HealthStatus healthStatus : this.healthStatuses) {
             try {
                 try {
@@ -35,9 +39,7 @@ public class HealthStatusHead implements HealthStatus{
                 logger.error(e.toString());
             }
         }
-        aggregateHealthInfo.setConfig(config);
-        aggregateHealthInfo.setDateTimeFormatter(config.getEpochFormatter());
-        aggregateHealthInfo.setEpoch();
+
         aggregateHealthInfo.log(new FileLogStrategy());
 
 

@@ -8,10 +8,10 @@ import org.isro.istrac.nsa.inoctf.exception.ConfigException;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Map;
 import java.util.Optional;
 
-import static org.isro.istrac.nsa.inoctf.config.ConsoleColors.RED_BOLD_BRIGHT;
-import static org.isro.istrac.nsa.inoctf.config.ConsoleColors.RESET;
+import static org.isro.istrac.nsa.inoctf.config.ConsoleColors.*;
 
 @ToString
 @NoArgsConstructor
@@ -35,6 +35,9 @@ public class Config {
     private String showKeyWithStatus;
     private  String showEpochKeyWithStatus;
     private String showEpoch;
+
+    protected Map<String,Integer> logPriorityMap;
+
 
 
     private  Optional<Config> loadConfiguration()  {

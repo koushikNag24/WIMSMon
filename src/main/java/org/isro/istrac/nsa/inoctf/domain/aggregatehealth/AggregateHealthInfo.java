@@ -24,14 +24,16 @@ public class AggregateHealthInfo {
     @ToString.Exclude
     private DateTimeFormatter DATE_TIME_FORMATTER;
     final static Logger logger = Logger.getLogger(AggregateHealthInfo.class);
-    private List<BaseAggregateHealthInfo> diskAggregateHealthInfos;
-    private List<BaseAggregateHealthInfo> fileAggregateHealthInfos;
-    private List<BaseAggregateHealthInfo> processAggregateHealthInfos;
-    private List<BaseAggregateHealthInfo> systemDAggregateHealthInfos;
+    private List<BaseAggregateHealthInfo> aggregateHealthInfos;
+
     private String epoch;
     private Config config;
     public void log(LogStrategy logStrategy){
         logStrategy.log(this,config);
+    }
+
+    public void addAggregateHealthInfo(BaseAggregateHealthInfo healthInfo){
+        this.aggregateHealthInfos.add(healthInfo);
     }
     public void setDateTimeFormatter( String formatter){
         if(formatter==null){

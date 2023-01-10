@@ -1,13 +1,13 @@
-package org.isro.istrac.nsa.inoctf.domain;
+package org.isro.istrac.nsa.inoctf.model;
 
 import lombok.NonNull;
 import org.apache.log4j.Logger;
 import org.isro.istrac.nsa.inoctf.config.Config;
 import org.isro.istrac.nsa.inoctf.config.FileHealthStatusConf;
 import org.isro.istrac.nsa.inoctf.config.MonFile;
-import org.isro.istrac.nsa.inoctf.domain.aggregatehealth.AggregateHealthInfo;
-import org.isro.istrac.nsa.inoctf.domain.aggregatehealth.BaseAggregateHealthInfo;
-import org.isro.istrac.nsa.inoctf.domain.aggregatehealth.FileAggregateHealthInfo;
+import org.isro.istrac.nsa.inoctf.model.aggregatehealth.AggregateHealthInfo;
+import org.isro.istrac.nsa.inoctf.model.aggregatehealth.BaseAggregateHealthInfo;
+import org.isro.istrac.nsa.inoctf.model.aggregatehealth.FileAggregateHealthInfo;
 import org.isro.istrac.nsa.inoctf.utils.Utils;
 
 import java.io.IOException;
@@ -19,7 +19,7 @@ import java.time.Instant;
 import java.util.HashMap;
 import java.util.List;
 
-import static org.isro.istrac.nsa.inoctf.domain.DiskHealthStatus.DEFAULT_PRIORITY;
+import static org.isro.istrac.nsa.inoctf.model.DiskHealthStatus.DEFAULT_PRIORITY;
 
 public class FileHealthStatus implements HealthStatus{
 

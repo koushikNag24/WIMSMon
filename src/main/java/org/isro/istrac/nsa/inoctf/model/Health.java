@@ -1,4 +1,4 @@
-package org.isro.istrac.nsa.inoctf.domain;
+package org.isro.istrac.nsa.inoctf.model;
 
 
 public enum Health {

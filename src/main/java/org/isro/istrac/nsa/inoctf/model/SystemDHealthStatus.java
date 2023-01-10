@@ -1,12 +1,12 @@
-package org.isro.istrac.nsa.inoctf.domain;
+package org.isro.istrac.nsa.inoctf.model;
 
 import lombok.NonNull;
 import org.apache.log4j.Logger;
 import org.isro.istrac.nsa.inoctf.config.Config;
 import org.isro.istrac.nsa.inoctf.config.SystemDHealthStatusConf;
-import org.isro.istrac.nsa.inoctf.domain.aggregatehealth.AggregateHealthInfo;
-import org.isro.istrac.nsa.inoctf.domain.aggregatehealth.BaseAggregateHealthInfo;
-import org.isro.istrac.nsa.inoctf.domain.aggregatehealth.SystemDAggregateHealthInfo;
+import org.isro.istrac.nsa.inoctf.model.aggregatehealth.AggregateHealthInfo;
+import org.isro.istrac.nsa.inoctf.model.aggregatehealth.BaseAggregateHealthInfo;
+import org.isro.istrac.nsa.inoctf.model.aggregatehealth.SystemDAggregateHealthInfo;
 import org.isro.istrac.nsa.inoctf.exception.OsCommandExecException;
 import org.isro.istrac.nsa.inoctf.utils.Utils;
 
@@ -15,7 +15,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static org.isro.istrac.nsa.inoctf.domain.DiskHealthStatus.DEFAULT_PRIORITY;
+import static org.isro.istrac.nsa.inoctf.model.DiskHealthStatus.DEFAULT_PRIORITY;
 
 public class SystemDHealthStatus implements  HealthStatus{
     public static final String SERVICE_NAME_PLACE_HOLDER = "service_name";

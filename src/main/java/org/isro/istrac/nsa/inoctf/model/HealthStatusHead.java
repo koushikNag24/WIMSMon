@@ -1,9 +1,9 @@
-package org.isro.istrac.nsa.inoctf.domain;
+package org.isro.istrac.nsa.inoctf.model;
 
 import lombok.AllArgsConstructor;
 import org.apache.log4j.Logger;
 import org.isro.istrac.nsa.inoctf.config.Config;
-import org.isro.istrac.nsa.inoctf.domain.aggregatehealth.AggregateHealthInfo;
+import org.isro.istrac.nsa.inoctf.model.aggregatehealth.AggregateHealthInfo;
 import org.isro.istrac.nsa.inoctf.exception.InternalAggregateMonException;
 import org.isro.istrac.nsa.inoctf.strategy.FileLogStrategy;
 

@@ -3,7 +3,7 @@ package org.isro.istrac.nsa.inoctf.strategy;
 import lombok.NonNull;
 import org.apache.log4j.Logger;
 import org.isro.istrac.nsa.inoctf.config.Config;
-import org.isro.istrac.nsa.inoctf.domain.aggregatehealth.AggregateHealthInfo;
+import org.isro.istrac.nsa.inoctf.model.aggregatehealth.AggregateHealthInfo;
 
 public class DbmsLogStrategy implements LogStrategy{
     final static Logger logger = Logger.getLogger(DbmsLogStrategy.class);

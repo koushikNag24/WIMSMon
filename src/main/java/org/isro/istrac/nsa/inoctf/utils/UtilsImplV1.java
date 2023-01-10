@@ -1,16 +1,10 @@
 package org.isro.istrac.nsa.inoctf.utils;
 
-import lombok.extern.slf4j.Slf4j;
-import org.isro.istrac.nsa.inoctf.domain.Health;
-import org.isro.istrac.nsa.inoctf.exception.OsCommandExecException;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 public class UtilsImplV1 implements Utils {

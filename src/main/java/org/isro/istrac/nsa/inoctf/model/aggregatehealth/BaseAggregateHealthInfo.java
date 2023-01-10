@@ -1,4 +1,4 @@
-package org.isro.istrac.nsa.inoctf.domain.aggregatehealth;
+package org.isro.istrac.nsa.inoctf.model.aggregatehealth;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,7 +15,7 @@ public  class BaseAggregateHealthInfo implements Comparable<BaseAggregateHealthI
     protected int priority;
     @Override
     public int compareTo(BaseAggregateHealthInfo healthInfo){
-        if(healthInfo.getPriority()-this.getPriority()==0){
+        if(healthInfo.getPriority() == this.getPriority()){
             return this.getName().compareTo(healthInfo.getName());
         }
         return Integer.compare(healthInfo.getPriority(),this.getPriority());

@@ -1,12 +1,9 @@
 package org.isro.istrac.nsa.inoctf;
 
 import org.apache.log4j.Logger;
-import org.isro.istrac.nsa.inoctf.domain.*;
+import org.isro.istrac.nsa.inoctf.model.*;
 import org.isro.istrac.nsa.inoctf.utils.Utils;
 import org.isro.istrac.nsa.inoctf.utils.UtilsImplV1;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class App 
 {

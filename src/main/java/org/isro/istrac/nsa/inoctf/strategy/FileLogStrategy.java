@@ -3,8 +3,8 @@ package org.isro.istrac.nsa.inoctf.strategy;
 import lombok.NonNull;
 import org.apache.log4j.Logger;
 import org.isro.istrac.nsa.inoctf.config.Config;
-import org.isro.istrac.nsa.inoctf.domain.aggregatehealth.AggregateHealthInfo;
-import org.isro.istrac.nsa.inoctf.domain.aggregatehealth.BaseAggregateHealthInfo;
+import org.isro.istrac.nsa.inoctf.model.aggregatehealth.AggregateHealthInfo;
+import org.isro.istrac.nsa.inoctf.model.aggregatehealth.BaseAggregateHealthInfo;
 
 import java.io.File;
 import java.io.IOException;
@@ -37,7 +37,6 @@ public class FileLogStrategy implements LogStrategy{
         Path logFile=Paths.get(config.getHealthStatusLogArea()+File.separator+
                 STATUS_LOG_FILE_PREFIX+ FNAME_SEPERATOR + padStringWithZero(currentDoy, DOY_DIGITS)+ FNAME_SEPERATOR +padStringWithZero(currentYear, YEAR_DIGITS)+ FNAME_SEPERATOR + STATUS_LOG_FILE_POSTFIX);
 
-
         if(!Files.exists(logFile)){
             try {
                 Files.createFile(logFile);
@@ -52,15 +51,9 @@ public class FileLogStrategy implements LogStrategy{
         } catch (IOException e) {
             logger.error(e.toString());
         }
-        cleanOldHealthFileIfDayChanged(config);
+
     }
-    private static  void cleanOldHealthFileIfDayChanged(Config config){
-        LocalDateTime now=LocalDateTime.now();
-        String yesterdayDoy= String.valueOf(now.getDayOfYear()-1);
-        String currentYear= String.valueOf(now.getYear());
-        Path logFile=Paths.get(config.getHealthStatusLogArea()+File.separator+
-                STATUS_LOG_FILE_PREFIX+ FNAME_SEPERATOR + padStringWithZero(yesterdayDoy, DOY_DIGITS)+ FNAME_SEPERATOR +padStringWithZero(currentYear, YEAR_DIGITS)+ FNAME_SEPERATOR + STATUS_LOG_FILE_POSTFIX);
-    }
+
     private static String getHealthString(@NonNull AggregateHealthInfo healthInfo,Config config){
         StringBuilder healthString =new StringBuilder();
         boolean showKeyWithStatus=Boolean.parseBoolean(config.getShowKeyWithStatus());

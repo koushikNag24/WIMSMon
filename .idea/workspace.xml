@@ -5,12 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="628be7e1-4701-4c6a-b1ad-5c3c61849426" name="Changes" comment="Added loging based on priority">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/config/Process.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/config/ProcessHealthStatusConf.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/config/ProcessHealthStatusConf.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/ProcessHealthStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/ProcessHealthStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/DiskHealthStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/model/DiskHealthStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/FileHealthStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/model/FileHealthStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/Health.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/model/Health.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/HealthFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/model/HealthFacade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/HealthStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/model/HealthStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/HealthStatusHead.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/model/HealthStatusHead.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/ProcessHealthStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/model/ProcessHealthStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/SystemDHealthStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/model/SystemDHealthStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/aggregatehealth/AggregateHealthInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/model/aggregatehealth/AggregateHealthInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/aggregatehealth/BaseAggregateHealthInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/model/aggregatehealth/BaseAggregateHealthInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/aggregatehealth/DiskAggregateHealthInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/model/aggregatehealth/DiskAggregateHealthInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/aggregatehealth/FileAggregateHealthInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/model/aggregatehealth/FileAggregateHealthInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/aggregatehealth/ProcessAggregateHealthInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/model/aggregatehealth/ProcessAggregateHealthInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/domain/aggregatehealth/SystemDAggregateHealthInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/model/aggregatehealth/SystemDAggregateHealthInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/strategy/DbmsLogStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/strategy/DbmsLogStrategy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/strategy/FileLogStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/strategy/FileLogStrategy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/strategy/LogStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/strategy/LogStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/utils/UtilsImplV1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/isro/istrac/nsa/inoctf/utils/UtilsImplV1.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -189,7 +203,28 @@
       <option name="project" value="LOCAL" />
       <updated>1673249057801</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Added loging based on priority">
+      <created>1673252538349</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1673252538349</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Added loging based on priority">
+      <created>1673252746893</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1673252746893</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Added loging based on priority">
+      <created>1673252754592</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1673252754592</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">

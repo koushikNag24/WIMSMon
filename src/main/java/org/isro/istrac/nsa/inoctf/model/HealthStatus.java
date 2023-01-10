@@ -1,4 +1,4 @@
-package org.isro.istrac.nsa.inoctf.domain;
+package org.isro.istrac.nsa.inoctf.model;
 
 import org.isro.istrac.nsa.inoctf.exception.InternalAggregateMonException;
 

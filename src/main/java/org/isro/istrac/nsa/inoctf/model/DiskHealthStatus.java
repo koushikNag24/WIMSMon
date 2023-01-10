@@ -1,12 +1,12 @@
-package org.isro.istrac.nsa.inoctf.domain;
+package org.isro.istrac.nsa.inoctf.model;
 
 import lombok.NonNull;
 import org.apache.log4j.Logger;
 import org.isro.istrac.nsa.inoctf.config.Config;
 import org.isro.istrac.nsa.inoctf.config.DiskHealthStatusConf;
-import org.isro.istrac.nsa.inoctf.domain.aggregatehealth.AggregateHealthInfo;
-import org.isro.istrac.nsa.inoctf.domain.aggregatehealth.BaseAggregateHealthInfo;
-import org.isro.istrac.nsa.inoctf.domain.aggregatehealth.DiskAggregateHealthInfo;
+import org.isro.istrac.nsa.inoctf.model.aggregatehealth.AggregateHealthInfo;
+import org.isro.istrac.nsa.inoctf.model.aggregatehealth.BaseAggregateHealthInfo;
+import org.isro.istrac.nsa.inoctf.model.aggregatehealth.DiskAggregateHealthInfo;
 import org.isro.istrac.nsa.inoctf.exception.OsCommandExecException;
 import org.isro.istrac.nsa.inoctf.utils.Utils;
 

@@ -1,4 +1,4 @@
-package org.isro.istrac.nsa.inoctf.domain.aggregatehealth;
+package org.isro.istrac.nsa.inoctf.model.aggregatehealth;
 
 import lombok.Getter;
 import lombok.Setter;
